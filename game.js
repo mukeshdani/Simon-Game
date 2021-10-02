@@ -28,9 +28,40 @@ $(".btn").click(function() {
   playSound(userChosenColour);
 
   animatePress(userChosenColour);
+
+  checkAnswer(userClickedPattern.length-1);
 });
 
+
+//1. Create a new function called checkAnswer(), it should take one input with the name currentLevel
+function checkAnswer(currentLevel) {
+
+    //3. Write an if statement inside checkAnswer() to check if the most recent user answer is the same as the game pattern. If so then log "success", otherwise log "wrong".
+    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
+
+      console.log("success");
+
+      //4. If the user got the most recent answer right in step 3, then check that they have finished their sequence with another if statement.
+      if (userClickedPattern.length === gamePattern.length){
+
+        //5. Call nextSequence() after a 1000 millisecond delay.
+        setTimeout(function () {
+          nextSequence();
+        }, 1000);
+
+      }
+
+    } else {
+
+      console.log("wrong");
+
+    }
+
+}
+
 function nextSequence() {
+
+    userClickedPattern = [];
     level++;
 
     $("#level-title").text("Level " + level);
