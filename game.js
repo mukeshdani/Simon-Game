@@ -13,6 +13,8 @@ $(".btn").click(function() {
  
   userClickedPattern.push(userChosenColour);
   playSound(userChosenColour);
+
+  animatePress(userChosenColour);
 });
 
 function nextSequence() {
@@ -30,3 +32,14 @@ function playSound(name) {
   audio.play();
 }
 
+//1. Create a new function called animatePress(), it should take a single input parameter called currentColour.
+function animatePress(currentColor) {
+
+    //2. Use jQuery to add this pressed class to the button that gets clicked inside animatePress().
+    $("#" + currentColor).addClass("pressed");
+  
+    //3. use Google/Stackoverflow to figure out how you can use Javascript to remove the pressed class after a 100 milliseconds.
+    setTimeout(function () {
+      $("#" + currentColor).removeClass("pressed");
+    }, 100);
+  }
