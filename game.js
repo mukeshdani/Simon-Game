@@ -61,9 +61,12 @@ function checkAnswer(currentLevel) {
         setTimeout(function () {
           $("body").removeClass("game-over");
         }, 200);
-  
-    
+
         $("#level-title").text("Game Over, Press Any Key to Restart");
+
+        setTimeout(function () {
+            $("body").removeClass("game-over");
+          }, 200);
         startOver();
       }
 
@@ -86,10 +89,6 @@ function nextSequence() {
 
   playSound(randomChosenColour);
 }
-function playSound(name) {
-  var audio = new Audio("sounds/" + randomChosenColour + ".mp3");
-  audio.play();
-}
 
 
 function animatePress(currentColor) {
@@ -103,7 +102,10 @@ function animatePress(currentColor) {
     }, 100);
   }
 
-
+  function playSound(name) {
+    var audio = new Audio("sounds/" + name + ".mp3");
+    audio.play();
+  }
 
 function startOver() {
 
